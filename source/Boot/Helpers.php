@@ -181,6 +181,22 @@ function url(string $path = null): string
     return CONF_URL_BASE;
 }
 
+function urlAJAX(string $path = null): string
+{
+  if (strpos($_SERVER['HTTP_HOST'], "localhost")) {
+    if ($path) {
+      return CONF_URL_TEST_AJAX . ($path[0] == "/" ? mb_substr($path, 1) : $path);
+    }
+    return CONF_URL_TEST_AJAX;
+  }
+
+  if ($path) {
+    return CONF_URL_BASE_AJAX . ($path[0] == "/" ? mb_substr($path, 1) : $path);
+  }
+
+  return CONF_URL_BASE_AJAX;
+}
+
 /**
  * @return string
  */
