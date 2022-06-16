@@ -2874,7 +2874,7 @@ span.flatpickr-weekday {
 
 /*# sourceMappingURL=sourcemaps/tiny-slider.css.map */
 /* Functional styling;
- * These styles are required for noUiSlider to function.
+ * These css are required for noUiSlider to function.
  * You don't need to change these rules to apply your design.
  */
 .noUi-target,
@@ -6441,7 +6441,7 @@ button.toastr-close-button {
     }
 }
 
-/* Resize generated styles */
+/* Resize generated css */
 @keyframes resizeanim {
     from {
         opacity: 0;

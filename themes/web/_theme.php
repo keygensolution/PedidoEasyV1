@@ -7,7 +7,7 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <?= $head ?>
 
-    <?= $v->section("styles"); ?>
+    <?= $v->section("css"); ?>
 </head>
 <body>
 

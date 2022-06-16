@@ -18,7 +18,13 @@ if (strpos($_SERVER['HTTP_HOST'], "localhost")) {
  * PROJECT URLs
  */
 define("CONF_URL_BASE", "https://www.pedidoeasyv1.keygen.com.br");
-define("CONF_URL_TEST", "https://www.localhost/pedidoeasyv1");
+define("CONF_URL_TEST", "https://www.localhost/pe");
+
+/**
+ * PROJECT URLs AJAX
+ */
+define("CONF_URL_BASE_AJAX", "/");
+define("CONF_URL_TEST_AJAX", "/pe/");
 
 /**
  * SITE

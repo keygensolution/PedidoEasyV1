@@ -1,5 +1,5 @@
 @charset "UTF-8";
-/* override some bootstrap styles screwing up the timelines css */
+/* override some bootstrap css screwing up the timelines css */
 .vis [class*=span] {
     min-height: 0;
     width: auto;
@@ -1040,7 +1040,7 @@ input.vis-configuration.vis-config-rangeinput {
 }
 
 input.vis-configuration.vis-config-range {
-    /*removes default webkit styles*/
+    /*removes default webkit css*/
     -webkit-appearance: none;
     /*fix for FF unable to apply focus style bug */
     border: 0px solid white;

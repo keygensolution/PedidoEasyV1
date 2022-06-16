@@ -26,6 +26,9 @@ $route->group("/app");
 /** App */
 $route->get("/", "App:index");
 
+/** Login */
+$route->get("/login", "Login:index");
+$route->post("/validateLogin", "Login:validadeLogin");
 
 
 
