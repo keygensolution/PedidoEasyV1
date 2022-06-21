@@ -19,7 +19,8 @@
                             <label for="email" class="form-label fs-6 fw-bolder text-dark">Email</label>
                             <input class="form-control form-control-lg form-control-solid" type="text" id="email"
                                    name="email"
-                                   autocomplete="off" autofocus/>
+                                   autocomplete="off" autofocus
+                            value="lucasfrancisco1318@gmail.com"/>
                         </div>
                         <div class="fv-row mb-10">
                             <div class="d-flex flex-stack mb-2">
@@ -29,7 +30,8 @@
                             </div>
                             <input class="form-control form-control-lg form-control-solid" type="password" id="password"
                                    name="password"
-                                   autocomplete="off"/>
+                                   autocomplete="off"
+                            value="aluno12345"/>
                         </div>
                         <div class="text-center">
 

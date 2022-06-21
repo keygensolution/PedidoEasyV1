@@ -230,11 +230,19 @@ function redirect(string $url): void
  */
 
 /**
- * @return \Source\Models\User|null
+ * @return \Source\Models\tables\T002User|null
  */
-function user(): ?\Source\Models\User
+function user(): ?\Source\Models\tables\T002User
 {
     return \Source\Models\Auth::user();
+}
+
+/**
+ * @return \Source\Models\tables\T003Company|null
+ */
+function company(): ?\Source\Models\tables\T003Company
+{
+  return \Source\Models\Auth::company();
 }
 
 /**

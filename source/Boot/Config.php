@@ -6,7 +6,7 @@ if (strpos($_SERVER['HTTP_HOST'], "localhost")) {
     define("CONF_DB_HOST", "localhost");
     define("CONF_DB_USER", "root");
     define("CONF_DB_PASS", "");
-    define("CONF_DB_NAME", "pedidoeasyv1");
+    define("CONF_DB_NAME", "pe");
 } else {
     define("CONF_DB_HOST", "108.167.132.58");
     define("CONF_DB_USER", "keygen50_admin");
@@ -98,16 +98,16 @@ define("CONF_IMAGE_QUALITY", ["jpg" => 75, "png" => 5]);
 /**
  * MAIL
  */
-define("CONF_MAIL_HOST", "smtp.sendgrid.net");
-define("CONF_MAIL_PORT", "587");
-define("CONF_MAIL_USER", "apikey");
-define("CONF_MAIL_PASS", "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");
-define("CONF_MAIL_SENDER", ["name" => "Robson V. Leite", "address" => "sender@email.com"]);
-define("CONF_MAIL_SUPPORT", "sender@support.com");
+define("CONF_MAIL_HOST", "application.keygen.com.br");
+define("CONF_MAIL_PORT", "465");
+define("CONF_MAIL_USER", "contato@application.keygen.com.br");
+define("CONF_MAIL_PASS", "Ti1318@1997@");
+define("CONF_MAIL_SENDER", ["name" => "Keygen Solution", "address" => "contato@application.keygen.com.br"]);
+define("CONF_MAIL_SUPPORT", "contato@application.keygen.com.br");
 define("CONF_MAIL_OPTION_LANG", "br");
 define("CONF_MAIL_OPTION_HTML", true);
 define("CONF_MAIL_OPTION_AUTH", true);
-define("CONF_MAIL_OPTION_SECURE", "tls");
+define("CONF_MAIL_OPTION_SECURE", "ssl");
 define("CONF_MAIL_OPTION_CHARSET", "utf-8");
 
 /**
