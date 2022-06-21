@@ -139,7 +139,7 @@ var KTIntro = function () {
             trigger: 'manual',
             dismiss: true,
             html: true,
-            title: 'Advanced User Menu',
+            title: 'Advanced T002User Menu',
             content: 'With quick links to user profile and account settings pages'
         }
 

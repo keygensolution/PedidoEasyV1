@@ -30,6 +30,9 @@ $route->get("/", "App:index");
 $route->get("/login", "Login:index");
 $route->post("/validateLogin", "Login:validadeLogin");
 
+/** Change Company */
+$route->post("/changeCompany", "App:changeCompany");
+
 
 
 /** End App */

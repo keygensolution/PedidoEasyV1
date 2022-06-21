@@ -2268,7 +2268,7 @@
             }
         }
 
-        /* User specified column options */
+        /* T002User specified column options */
         if ( oOptions !== undefined && oOptions !== null )
         {
             // Backwards compatibility
