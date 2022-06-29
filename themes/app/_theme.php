@@ -128,33 +128,51 @@
     </div>
 </div>
 
-<!--<script src="--><?//= url("/shared/scripts/jquery.min.js"); ?><!--"></script>-->
-<!--<script src="--><?//= url("/shared/scripts/jquery-ui.js"); ?><!--"></script>-->
-<!--<script src="--><?//= url("/shared/scripts/jquery.form.js"); ?><!--"></script>-->
-<!--<script src="--><?//= url("/shared/scripts/jquery.mask.js"); ?><!--"></script>-->
+<script src="<?= url("/shared/scripts/jquery.min.js"); ?>"></script>
+<script src="<?= url("/shared/scripts/jquery-ui.js"); ?>"></script>
+<script src="<?= url("/shared/scripts/jquery.form.js"); ?>"></script>
+<script src="<?= url("/shared/scripts/jquery.mask.js"); ?>"></script>
+
+<script src="<?= theme("/assets/js/scripts.js", CONF_VIEW_APP); ?>"></script>
+
+<!--<script src="--><?//= url("/shared/app/js/plugins.bundle.js"); ?><!--"></script>-->
+<!--<script src="--><?//= url("/shared/app/js/scripts.bundle.js"); ?><!--"></script>-->
+<!--<script src="--><?//= url("/shared/app/js/fullcalendar.bundle.js"); ?><!--"></script>-->
+<!--<script src="--><?//= url("/shared/app/js/datatables.bundle.js"); ?><!--"></script>-->
+<!--<script src="--><?//= url("/shared/app/js/widgets.bundle.js"); ?><!--"></script>-->
+<!--<script src="--><?//= url("/shared/app/js/widgets.js"); ?><!--"></script>-->
+<!--<script src="--><?//= url("/shared/app/js/chat.js"); ?><!--"></script>-->
+<!--<script src="--><?//= url("/shared/app/js/intro.js"); ?><!--"></script>-->
+<!--<script src="--><?//= url("/shared/app/js/create-app.js"); ?><!--"></script>-->
+<!--<script src="--><?//= url("/shared/app/js/users-search.js"); ?><!--"></script>-->
 <!---->
-<!--<script src="--><?//= theme("/assets/js/scripts.js", CONF_VIEW_APP); ?><!--"></script>-->
+<!--<script src="--><?//= url("/shared/app/js/categories.js"); ?><!--"></script>-->
+<!---->
+<!--<script src="--><?//= url("/shared/app/js/formrepeater.bundle.js"); ?><!--"></script>-->
 
-<script src="<?= url("/shared/app/js/plugins.bundle.js"); ?>"></script>
-<script src="<?= url("/shared/app/js/scripts.bundle.js"); ?>"></script>
-<script src="<?= url("/shared/app/js/fullcalendar.bundle.js"); ?>"></script>
-<script src="<?= url("/shared/app/js/datatables.bundle.js"); ?>"></script>
-<script src="<?= url("/shared/app/js/widgets.bundle.js"); ?>"></script>
-<script src="<?= url("/shared/app/js/widgets.js"); ?>"></script>
-<script src="<?= url("/shared/app/js/chat.js"); ?>"></script>
-<script src="<?= url("/shared/app/js/intro.js"); ?>"></script>
-<script src="<?= url("/shared/app/js/create-app.js"); ?>"></script>
-<script src="<?= url("/shared/app/js/users-search.js"); ?>"></script>
 
-<script src="<?= url("/shared/app/js/categories.js"); ?>"></script>
+<script src="<?= url("/shared/app/assets/plugins/global/plugins.bundle.js") ?>"></script>
+<script src="<?= url("/shared/app/assets/js/scripts.bundle.js") ?>"></script>
+<script src="<?= url("/shared/app/assets/plugins/custom/fullcalendar/fullcalendar.bundle.js") ?>"></script>
+<script src="<?= url("/shared/app/assets/plugins/custom/datatables/datatables.bundle.js") ?>"></script>
+<script src="<?= url("/shared/app/assets/js/widgets.bundle.js") ?>"></script>
+<script src="<?= url("/shared/app/assets/js/custom/widgets.js") ?>"></script>
+<script src="<?= url("/shared/app/assets/js/custom/apps/chat/chat.js") ?>"></script>
+<script src="<?= url("/shared/app/assets/js/custom/intro.js") ?>"></script>
+<script src="<?= url("/shared/app/assets/js/custom/utilities/modals/upgrade-plan.js") ?>"></script>
+<script src="<?= url("/shared/app/assets/js/custom/utilities/modals/create-campaign.js") ?>"></script>
+<script src="<?= url("/shared/app/assets/js/custom/utilities/modals/create-app.js") ?>"></script>
+<script src="<?= url("/shared/app/assets/js/custom/utilities/modals/users-search.js") ?>"></script>
+<script src="<?= url("/shared/app/assets/plugins/custom/formrepeater/formrepeater.bundle.js") ?>"></script>
+<script src="<?= url("/shared/app/assets/js/custom/apps/ecommerce/catalog/save-category.js") ?>"></script>
+<script src="<?= url("/shared/app/assets/js/custom/apps/ecommerce/catalog/categories.js") ?>"></script>
 
-<script src="<?= url("/shared/app/js/formrepeater.bundle.js"); ?>"></script>
 
-<!--<script src="--><?//= url("/shared/fontawesome/js/all.js"); ?><!--"></script>-->
-<!--<script src="--><?//= url("/shared/fontawesome/js/brands.js"); ?><!--"></script>-->
-<!--<script src="--><?//= url("/shared/fontawesome/js/fontawesome.js"); ?><!--"></script>-->
-<!--<script src="--><?//= url("/shared/fontawesome/js/regular.js"); ?><!--"></script>-->
-<!--<script src="--><?//= url("/shared/fontawesome/js/solid.js"); ?><!--"></script>-->
+<script src="<?= url("/shared/fontawesome/js/all.js"); ?>"></script>
+<script src="<?= url("/shared/fontawesome/js/brands.js"); ?>"></script>
+<script src="<?= url("/shared/fontawesome/js/fontawesome.js"); ?>"></script>
+<script src="<?= url("/shared/fontawesome/js/regular.js"); ?>"></script>
+<script src="<?= url("/shared/fontawesome/js/solid.js"); ?>"></script>
 
 <script>
 
