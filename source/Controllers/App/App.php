@@ -19,11 +19,11 @@ class App extends Controller
     }
 
     $this->company = Auth::company();
+
   }
 
   public function index(): void
   {
-    $companies = (new VW001ListOfCompany())->find("user_id = :a", "a={$this->user->id}", "company_id, company_name")->fetch(true);
 
     $head = $this->seo->render(
       "Home - " . CONF_SITE_NAME . " - " . CONF_SITE_TITLE,
@@ -33,9 +33,7 @@ class App extends Controller
     );
 
     echo $this->view->render("views/App/index", [
-      "head" => $head,
-      "companies" => $companies,
-      "company_id" => $this->company->id
+      "head" => $head
     ]);
   }
 

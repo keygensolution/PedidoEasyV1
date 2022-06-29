@@ -19,7 +19,7 @@ create table t002_users
 (
     id              int          not null auto_increment primary key,
     name            varchar(100) not null,
-    email           varchar(100) not null,
+    email           varchar(100) not null unique,
     password        varchar(150) not null,
     access_level_id int          not null,
     phone           char(11)     not null,
@@ -70,6 +70,21 @@ create table t004_ceo_and_companies
 insert into t004_ceo_and_companies (user_id, company_id)
     value (2, 3);
 
+create table t005_categories
+(
+    id            int          not null auto_increment primary key,
+    category_name varchar(100) not null,
+    description   varchar(255) not null,
+    status        bool                  default 1,
+    photo         varchar(100) not null,
+    company_id    int,
+    foreign key (company_id) references t003_companies (id),
+    created_at    timestamp    not null default current_timestamp,
+    updated_at    timestamp    null     default null on update current_timestamp
+);
+
+
+
 create view vw001_list_of_companies
 as
 
@@ -83,4 +98,3 @@ from t004_ceo_and_companies as a
                     on a.user_id = b.id
          inner join t003_companies c
                     on a.company_id = c.id;
-
