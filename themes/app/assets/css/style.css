@@ -136,10 +136,10 @@ p {
     padding: 20px 20px 0 0;
     z-index: 998;
 
-    top: 0;
-    right: 0;
+    top: 88%;
     width: 300px;
     max-width: 100%;
+    align-items: center;
 }
 
 .ajax_response .message {

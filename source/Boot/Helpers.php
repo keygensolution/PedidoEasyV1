@@ -471,3 +471,15 @@ function request_repeat(string $field, string $value): bool
     $session->set($field, $value);
     return false;
 }
+
+function generate_code(string $value)
+{
+  $md5 = md5($value);
+  $res = "";
+
+  for ( $i = 0; $i < 32; $i += 2 ) {
+    $res .= chr( hexdec( $md5{ $i + 1 } ) + hexdec( $md5{ $i } ) * 16 );
+  }
+
+  return $res;
+}
