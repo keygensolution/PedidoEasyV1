@@ -57,7 +57,7 @@ function ajaxMessage(message, time) {
     var ajaxMessage = $(message);
 
     ajaxMessage.append("<div class='message_time'></div>");
-    ajaxMessage.find(".message_time").animate({"width": "100%"}, time * 1000, function () {
+    ajaxMessage.find(".message_time").animate({"width": "100%"}, time * 500, function () {
         $(this).parents(".message").fadeOut(200);
     });
 
