@@ -1,3 +1,17 @@
+<?php
+
+use Source\Models\views\VW001ListOfCompany;
+use \Source\Models\Auth;
+
+$company_id = Auth::company();
+$user = Auth::user();
+
+$companies = (new VW001ListOfCompany())
+  ->find("user_id = :a", "a={$user->id}",
+    "company_id, company_name")
+  ->fetch(true);
+?>
+
 <div id="kt_header" class="header" data-kt-sticky="true" data-kt-sticky-name="header"
      data-kt-sticky-offset="{default: '200px', lg: '300px'}">
     <div class="header-top d-flex align-items-stretch flex-grow-1">
@@ -41,6 +55,17 @@
             </div>
             <div class="d-flex align-items-center flex-row-auto">
 
+                <div class="d-flex align-items-center ms-1" id="kt_header_user_menu_toggle">
+                    <select class="form-select" data-control="select2" id="company" name="company"
+                            data-placeholder="Selecione uma empresa" onchange="changeCompany()">
+                      <?php foreach ($companies as $a): ?>
+                          <option <?= $a->company_id == $company_id->id ? "selected" : "" ?>
+                                  value="<?= $a->company_id ?>"><?= $a->company_name ?></option>
+                      <?php endforeach; ?>
+
+                    </select>
+                </div>
+
                 <div class="d-flex align-items-center ms-1">
                     <div class="btn btn-icon btn-color-white bg-hover-white bg-hover-opacity-10 w-35px h-35px h-md-40px w-md-40px position-relative"
                          id="kt_drawer_chat_toggle">
@@ -57,7 +82,6 @@
                         <span class="bullet bullet-dot bg-success h-6px w-6px position-absolute translate-middle top-0 start-50 animation-blink"></span>
                     </div>
                 </div>
-
 
                 <div class="d-flex align-items-center ms-1" id="kt_header_user_menu_toggle">
                     <div class="btn btn-flex align-items-center bg-hover-white bg-hover-opacity-10 py-2 px-2 px-md-3"
@@ -333,7 +357,6 @@
                                         </div>
                                     </div>
                                 </div>
-
 
 
                                 <div data-kt-menu-trigger="{default: 'click', lg: 'hover'}"

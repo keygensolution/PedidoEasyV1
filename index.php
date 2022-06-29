@@ -18,8 +18,6 @@ $route->group(null);
 /** Web */
 $route->get("/", "Web:index");
 
-
-
 $route->namespace("Source\Controllers\App");
 $route->group("/app");
 
@@ -32,6 +30,11 @@ $route->post("/validateLogin", "Login:validadeLogin");
 
 /** Change Company */
 $route->post("/changeCompany", "App:changeCompany");
+
+/** Categories */
+$route->get("/categories", "Categories:index");
+$route->get("/categories/create", "Categories:registerCategory");
+$route->post("/categories/create", "Categories:create");
 
 
 
