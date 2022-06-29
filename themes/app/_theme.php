@@ -17,18 +17,12 @@
     <link rel="stylesheet" href="<?= url("/shared/fontawesome/css/regular.css"); ?>">
     <link rel="stylesheet" href="<?= url("/shared/fontawesome/css/solid.css"); ?>">
 
-    <link rel="stylesheet" href="<?= url("/shared/app/css/datatables.bundle.css"); ?>">
-    <link rel="stylesheet" href="<?= url("/shared/app/css/vis-timeline.bundle.css"); ?>">
-    <link rel="stylesheet" href="<?= url("/shared/app/css/plugins.bundle.css"); ?>">
-    <link rel="stylesheet" href="<?= url("/shared/app/css/style.bundle.css"); ?>">
+    <link href="<?= url("/shared/app/assets/plugins/custom/fullcalendar/fullcalendar.bundle.css"); ?>" rel="stylesheet" type="text/css" />
+    <link href="<?= url("/shared/app/assets/plugins/custom/datatables/datatables.bundle.css"); ?>" rel="stylesheet" type="text/css" />
+    <link href="<?= url("/shared/app/assets/plugins/global/plugins.bundle.css"); ?>" rel="stylesheet" type="text/css" />
+    <link href="<?= url("/shared/app/assets/css/style.bundle.css"); ?>" rel="stylesheet" type="text/css" />
 
     <!--    <link rel="stylesheet" href="--><? //= theme("/assets/style.css", CONF_VIEW_APP); ?><!--">-->
-
-    <style>
-        .btn {
-            background: #0c2f64;
-        }
-    </style>
 
     <style>
         ::-webkit-scrollbar {
@@ -134,22 +128,6 @@
 <script src="<?= url("/shared/scripts/jquery.mask.js"); ?>"></script>
 
 <script src="<?= theme("/assets/js/scripts.js", CONF_VIEW_APP); ?>"></script>
-
-<!--<script src="--><?//= url("/shared/app/js/plugins.bundle.js"); ?><!--"></script>-->
-<!--<script src="--><?//= url("/shared/app/js/scripts.bundle.js"); ?><!--"></script>-->
-<!--<script src="--><?//= url("/shared/app/js/fullcalendar.bundle.js"); ?><!--"></script>-->
-<!--<script src="--><?//= url("/shared/app/js/datatables.bundle.js"); ?><!--"></script>-->
-<!--<script src="--><?//= url("/shared/app/js/widgets.bundle.js"); ?><!--"></script>-->
-<!--<script src="--><?//= url("/shared/app/js/widgets.js"); ?><!--"></script>-->
-<!--<script src="--><?//= url("/shared/app/js/chat.js"); ?><!--"></script>-->
-<!--<script src="--><?//= url("/shared/app/js/intro.js"); ?><!--"></script>-->
-<!--<script src="--><?//= url("/shared/app/js/create-app.js"); ?><!--"></script>-->
-<!--<script src="--><?//= url("/shared/app/js/users-search.js"); ?><!--"></script>-->
-<!---->
-<!--<script src="--><?//= url("/shared/app/js/categories.js"); ?><!--"></script>-->
-<!---->
-<!--<script src="--><?//= url("/shared/app/js/formrepeater.bundle.js"); ?><!--"></script>-->
-
 
 <script src="<?= url("/shared/app/assets/plugins/global/plugins.bundle.js") ?>"></script>
 <script src="<?= url("/shared/app/assets/js/scripts.bundle.js") ?>"></script>
