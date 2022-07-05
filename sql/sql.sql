@@ -83,8 +83,6 @@ create table t005_categories
     updated_at    timestamp    null     default null on update current_timestamp
 );
 
-
-
 create view vw001_list_of_companies
 as
 
@@ -98,3 +96,6 @@ from t004_ceo_and_companies as a
                     on a.user_id = b.id
          inner join t003_companies c
                     on a.company_id = c.id;
+
+
+select * from t005_categories where company_id = 1 or company_id is null

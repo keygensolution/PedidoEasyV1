@@ -1,183 +1,234 @@
 <?php $v->layout("_theme"); ?>
+    <style>
 
-    <div class="toolbar mb-n1 pt-3 mb-lg-n3 pt-lg-6" id="kt_toolbar">
-        <div class="page-title d-flex flex-column align-items-start me-3 py-2 py-lg-0 gap-2">
-            <h1 class="d-flex text-dark fw-bolder m-0 fs-3">Cadastrar Categoria</h1>
-            <ul class="breadcrumb breadcrumb-dot fw-bold text-gray-600 fs-7">
-                <li class="breadcrumb-item text-gray-600">
-                    <a href="<?= url("/app"); ?>" class="text-gray-600 text-hover-primary">Home</a>
-                </li>
-                <li class="breadcrumb-item text-gray-600">
-                    <a href="<?= url("/app/categories"); ?>" class="text-gray-600 text-hover-primary">Categorias</a>
-                </li>
-                <li class="breadcrumb-item text-gray-500">Cadastrar</li>
-            </ul>
-        </div>
-    </div>
+        .avatar-upload {
+            position: relative;
+            max-width: 205px;
+            margin: 50px auto;
+        }
 
-    <div class="mt-5">
-        <div class="flex-row-fluid">
-            <form class="form d-flex flex-column flex-lg-row" id="ajax_form">
-                <div class="d-flex flex-column gap-7 gap-lg-10 w-100 w-lg-300px mb-7 me-lg-10">
-                    <div class="card card-flush py-4">
-                        <div class="card-header">
-                            <div class="card-title">
-                                <h2>Imagem</h2>
-                            </div>
+        .avatar-upload .avatar-edit {
+            position: absolute;
+            right: 12px;
+            z-index: 1;
+            top: 10px;
+        }
+
+        .avatar-upload .avatar-edit input {
+            display: none;
+        }
+
+        .avatar-upload .avatar-edit input + label {
+            display: inline-block;
+            width: 34px;
+            height: 34px;
+            margin-bottom: 0;
+            border-radius: 100%;
+            background: #FFFFFF;
+            border: 1px solid transparent;
+            box-shadow: 0px 2px 4px 0px rgba(0, 0, 0, 0.12);
+            cursor: pointer;
+            font-weight: normal;
+            transition: all 0.2s ease-in-out;
+        }
+
+        .avatar-upload .avatar-edit input + label:hover {
+            background: #f1f1f1;
+            border-color: #d6d6d6;
+        }
+
+        .avatar-upload .avatar-edit input + label:after {
+            color: #757575;
+            position: absolute;
+            top: 10px;
+            left: 0;
+            right: 0;
+            text-align: center;
+            margin: auto;
+        }
+
+        .avatar-upload .avatar-preview {
+            width: 170px;
+            height: 170px;
+            position: relative;
+            border-radius: 100%;
+            border: 6px solid #F8F8F8;
+            box-shadow: 0px 2px 4px 0px rgba(0, 0, 0, 0.1);
+        }
+
+        .avatar-upload .avatar-preview > div {
+            width: 100%;
+            height: 100%;
+            border-radius: 100%;
+            background-size: cover;
+            background-repeat: no-repeat;
+            background-position: center;
+        }
+
+    </style>
+
+    <main>
+        <div class="container-fluid site-width">
+            <!-- START: Breadcrumbs-->
+            <div class="row ">
+                <div class="col-12  align-self-center">
+                    <div class="sub-header mt-3 py-3 align-self-center d-sm-flex w-100 rounded">
+                        <div class="w-sm-100 mr-auto">
+                            <h4 class="mb-0">Cadastrar Categoria</h4>
                         </div>
-                        <div class="card-body text-center pt-0">
-                            <div class="image-input image-input-empty image-input-outline mb-3"
-                                 data-kt-image-input="true"
-                                 style="background-image: url(<?= url("/shared/app/images/blank-image.svg"); ?>)">
-                                <div class="image-input-wrapper w-150px h-150px"></div>
-                                <label class="btn btn-icon btn-circle btn-active-color-primary w-25px h-25px bg-body shadow"
-                                       data-kt-image-input-action="change" data-bs-toggle="tooltip"
-                                       for="photo">
-                                    <i class="fa-solid fa-pencil" style="color: #0b0e18"></i>
-                                    <input type="file" name="photo" id="photo" accept=".png, .jpg, .jpeg"/>
-                                    <input type="hidden" name="avatar_remove"/>
-                                </label>
-                                <span class="btn btn-icon btn-circle btn-active-color-primary w-25px h-25px bg-body shadow"
-                                      data-kt-image-input-action="cancel" data-bs-toggle="tooltip">
-													<i class="fa-solid fa-close" style="color: #0b0e18"></i>
-												</span>
-                                <span class="btn btn-icon btn-circle btn-active-color-primary w-25px h-25px bg-body shadow"
-                                      data-kt-image-input-action="remove" data-bs-toggle="tooltip"
-                                      title="Remove avatar">
-													<i class="bi bi-x fs-2"></i>
-												</span>
-                            </div>
-                        </div>
+
+                        <ol class="breadcrumb bg-transparent align-self-center m-0 p-0">
+                            <li class="breadcrumb-item"><a href="<?= url("/app"); ?>">Home</a></li>
+                            <li class="breadcrumb-item"><a href="<?= url("/app/categories"); ?>">Categories</a></li>
+                            <li class="breadcrumb-item active">Cadastrar</li>
+                        </ol>
                     </div>
-
-
                 </div>
-                <div class="d-flex flex-column flex-row-fluid gap-7 gap-lg-10">
-                    <div class="card card-flush py-4">
+            </div>
+            <!-- END: Breadcrumbs-->
 
-                        <div class="card-body pt-0">
-                            <div class="mb-3 fv-row">
-                                <label for="category_name" class="required form-label">Nome da Categoria</label>
-                                <input type="text" name="category_name" id="category_name" class="form-control mb-2"
-                                       autocomplete="off" autofocus/>
-                            </div>
-                            <div class="mb-3 fv-row">
-                                <label for="description" class="required form-label">Descrição</label>
-                                <textarea class="form-control form-control-solid" name="description" id="description"
-                                          rows="5"></textarea>
-                            </div>
-                            <div>
-                                <label for="status" class="required form-label">Status</label>
-                                <select class="form-select mb-2" data-control="select2" data-hide-search="true"
-                                        id="status"
-                                        name="status">
-                                    <option value="1">Ativado</option>
-                                    <option value="0">Desativado</option>
-                                </select>
-                            </div>
+            <!-- START: Card Data-->
+            <div class="row">
+                <div class="col-12 mt-4">
+                    <div class="card">
 
+                        <div class="card-content">
+                            <div class="card-body">
+                                <div class="row">
+                                    <div class="col-12" style="margin-top: -50px">
+                                        <form id="ajax_form">
+
+                                            <div class="form-group">
+
+                                                <div class="avatar-upload">
+
+                                                    <div class="avatar-edit">
+                                                        <input type='file' id="imageUpload"
+                                                               accept=".png, .jpg, .jpeg" onchange="readURL(this)"/>
+                                                        <label for="imageUpload">
+                                                            <i class="fas fa-pen fa-lg"
+                                                               style="margin-left: 8px; margin-top: 10px"></i>
+                                                        </label>
+                                                    </div>
+                                                    <div class="avatar-preview">
+
+                                                        <div id="imagePreview"
+                                                             style="background-image: url(<?= url("/shared/app/images/blank-image.svg"); ?>);">
+                                                        </div>
+                                                    </div>
+
+                                                    <label style="margin-left: 30%; margin-top: 10px">Imagem</label>
+
+                                                </div>
+
+                                            </div>
+
+                                            <div class="form-row" style="margin-top: -50px">
+                                                <div class="form-group col-md-6">
+                                                    <label for="category_name">Nome da Categoria</label>
+                                                    <input type="text" class="form-control rounded" id="category_name"
+                                                           name="category_name">
+                                                </div>
+                                                <div class="form-group col-md-6">
+                                                    <label for="status">Status</label>
+                                                    <select id="status" name="status" class="form-control">
+                                                        <option value="Ativo">Ativo</option>
+                                                        <option value="Inativo">Inativo</option>
+                                                    </select>
+                                                </div>
+                                            </div>
+
+                                            <div class="form-group">
+                                                <label for="description">Descrição</label>
+                                                <textarea type="text" class="form-control" id="description"
+                                                          name="description"
+                                                          rows="2"></textarea>
+                                            </div>
+
+                                            <button type="submit" class="btn btn-success">Cadastrar</button>
+                                        </form>
+                                    </div>
+                                </div>
+                            </div>
                         </div>
                     </div>
-
-                    <div class="d-flex justify-content-end">
-                        <a href="<?= url("/app/categories"); ?>"
-                           class="btn btn-primary me-5">Cancelar</a>
-                        <button type="submit" class="btn btn-success">
-                            <span class="indicator-label">Cadastrar</span>
-                        </button>
-                    </div>
-
                 </div>
-            </form>
+            </div>
         </div>
-    </div>
+    </main>
 
 <?php $v->start("scripts"); ?>
-
     <script>
 
-        // Define form element
-        const form = document.getElementById('ajax_form');
-
-        // Init form validation rules. For more info check the FormValidation plugin's official documentation:https://formvalidation.io/
-        var validator = FormValidation.formValidation(
-            form,
-            {
-                fields: {
-                    'category_name': {
-                        validators: {
-                            notEmpty: {
-                                message: 'O campo Nome da Categoria não pode ser vazio!'
-                            }
-                        }
-                    },
-                    'description': {
-                        validators: {
-                            notEmpty: {
-                                message: 'Você deve selecionar uma imagem!'
-                            }
-                        }
-                    },
+        $(document).ready(function () {
+            $('#ajax_form').validate({
+                rules: {
+                    category_name: {required: true},
+                    description: {required: true},
                 },
+                submitHandler: function (form) {
+                    // var dados = $(form).serialize();
 
-                plugins: {
-                    trigger: new FormValidation.plugins.Trigger(),
-                    bootstrap: new FormValidation.plugins.Bootstrap5({
-                        rowSelector: '.fv-row',
-                        eleInvalidClass: '',
-                        eleValidClass: ''
-                    })
-                }
-            }
-        );
+                    var formData = new FormData(document.getElementById("ajax_form"));
+                    var files = $('#imageUpload')[0].files;
 
-        form.addEventListener('submit', function (e) {
-            e.preventDefault();
-            if (validator) {
-                validator.validate().then(function (status) {
-                    if (status === 'Valid') {
-
-                        var dados = $(form).serialize();
-                        var image = new FormData();
-                        image.append('file', $('#photo'));
-
-                        var load = $(".ajax_load");
-                        load.fadeIn(200).css("display", "flex");
-
-                        $.ajax({
-                            type: "POST",
-                            url: "<?= urlAJAX("app/categories/create"); ?>",
-                            data: {dados, image},
-                            success: function (data) {
-                                let response = JSON.parse(data);
-
-                                //redirect
-                                if (response.redirect) {
-                                    window.location.href = response.redirect;
-                                }
-
-                                //reload
-                                if (response.reload) {
-                                    window.location.reload();
-                                }
-
-                                //message
-                                if (response.message) {
-                                    ajaxMessage(response.message, ajaxResponseBaseTime);
-                                }
-
-                                load.fadeOut(200);
-                            },
-                            error: function () {
-                                ajaxMessage(ajaxResponseRequestError, 5);
-                                load.fadeOut();
-                            }
-                        });
-
+                    if (files.length > 0) {
+                        formData.append('photo', files[0]);
                     }
-                });
-            }
+
+                    var load = $(".ajax_load");
+                    load.fadeIn(200).css("display", "flex");
+
+                    $.ajax({
+                        type: "POST",
+                        url: "<?= urlAJAX("app/categories/create"); ?>",
+                        data: formData,
+                        contentType: false,
+                        processData: false,
+                        success: function (data) {
+                            let response = JSON.parse(data);
+
+                            //redirect
+                            if (response.redirect) {
+                                window.location.href = response.redirect;
+                            }
+
+                            //reload
+                            if (response.reload) {
+                                window.location.reload();
+                            }
+
+                            //message
+                            if (response.message) {
+                                ajaxMessage(response.message, ajaxResponseBaseTime);
+                            }
+
+                            load.fadeOut(200);
+                        },
+                        error: function () {
+                            ajaxMessage(ajaxResponseRequestError, 5);
+                            load.fadeOut();
+                        }
+                    });
+
+                    return false;
+                }
+            });
         });
+
+
+        function readURL(input) {
+            if (input.files && input.files[0]) {
+                var reader = new FileReader();
+                reader.onload = function (e) {
+                    $('#imagePreview').css('background-image', 'url(' + e.target.result + ')');
+                    $('#imagePreview').hide();
+                    $('#imagePreview').fadeIn(650);
+                }
+                reader.readAsDataURL(input.files[0]);
+            }
+        }
+
 
     </script>
 

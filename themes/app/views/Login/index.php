@@ -1,48 +1,40 @@
 <?php $v->layout("_login"); ?>
 
-    <div class="d-flex flex-column flex-root">
+    <div class="container">
+        <div class="row vh-100 justify-content-between align-items-center">
+            <div class="col-12">
+                <form id="ajax_form" class="row row-eq-height lockscreen  mt-5 mb-5">
 
-        <div class="d-flex flex-column flex-column-fluid bgi-position-y-bottom position-x-center bgi-no-repeat bgi-size-contain bgi-attachment-fixed">
-            <div class="d-flex flex-center flex-column flex-column-fluid p-10 pb-lg-20">
-                <a href="<?= url("/app/login"); ?>" class="mb-12">
-                    <img alt="Logo" src="<?= url("/shared/images/logo-atualizado.png"); ?>" class="h-60px"/>
-                </a>
-                <div class="w-lg-500px bg-body rounded shadow-sm p-10 p-lg-15 mx-auto">
-                    <form class="form w-100" id="ajax_form">
+                  <?= csrf_input(); ?>
 
-                      <?= csrf_input(); ?>
-
-                        <div class="text-center mb-10">
-                            <h1 class="text-dark mb-3">Acessar Pedido Easy</h1>
+                    <div class="lock-image col-12 col-sm-5"></div>
+                    <div class="login-form col-12 col-sm-7">
+                        <div class="form-group mb-3">
+                            <label for="email">E-mail</label>
+                            <input class="form-control" type="email" id="email" name="email"
+                                   placeholder="Digite seu e-mail" value="lucasfrancisco1318@gmail.com">
                         </div>
-                        <div class="fv-row mb-10">
-                            <label for="email" class="form-label fs-6 fw-bolder text-dark">Email</label>
-                            <input class="form-control form-control-lg form-control-solid" type="text" id="email"
-                                   name="email"
-                                   autocomplete="off" autofocus
-                            value="lucasfrancisco1318@gmail.com"/>
+
+                        <div class="form-group mb-3">
+                            <label for="password">Senha</label>
+                            <input class="form-control" type="password" id="password" name="password"
+                                   placeholder="Digite sua senha" value="aluno12345">
                         </div>
-                        <div class="fv-row mb-10">
-                            <div class="d-flex flex-stack mb-2">
-                                <label for="password" class="form-label fw-bolder text-dark fs-6 mb-0">Senha</label>
-                                <a href="password-reset.html" class="link-primary fs-6 fw-bolder">Esqueceu sua
-                                    senha?</a>
+
+                        <div class="form-group mb-3">
+                            <div class="custom-control custom-checkbox">
+                                <input type="checkbox" class="custom-control-input"
+                                       id="save" <?= (!empty($cookie) ? "checked" : ""); ?> name="save">
+                                <label class="custom-control-label" for="save">Lembrar de mim</label>
                             </div>
-                            <input class="form-control form-control-lg form-control-solid" type="password" id="password"
-                                   name="password"
-                                   autocomplete="off"
-                            value="aluno12345"/>
                         </div>
-                        <div class="text-center">
 
-                            <button type="submit" class="btn btn-lg w-100 mb-5"
-                                    style="background-color: #0ec244; color: #FFFFFF">
-                                <span class="indicator-label">Acessar</span>
-                            </button>
-
+                        <div class="form-group mb-0">
+                            <button class="btn" type="submit" style="background-color: #00C333; color: #FFFFFF"> Acessar</button>
                         </div>
-                    </form>
-                </div>
+
+                    </div>
+                </form>
             </div>
 
         </div>
