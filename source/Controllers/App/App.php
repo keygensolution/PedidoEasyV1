@@ -37,7 +37,7 @@ class App extends Controller
     ]);
   }
 
-  public function changeCompany($data)
+  public function changeCompany(?array $data)
   {
     $session = new Session();
 

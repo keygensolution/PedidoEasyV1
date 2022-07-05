@@ -35,6 +35,9 @@ $route->post("/changeCompany", "App:changeCompany");
 $route->get("/categories", "Categories:index");
 $route->get("/categories/create", "Categories:registerCategory");
 $route->post("/categories/create", "Categories:create");
+$route->get("/categories/update/{id}", "Categories:changeCategory");
+$route->post("/categories/update", "Categories:update");
+$route->post("/categories/delete", "Categories:delete");
 
 
 

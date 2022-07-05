@@ -181,6 +181,22 @@ function url(string $path = null): string
     return CONF_URL_BASE;
 }
 
+function urlSource(string $path = null): string
+{
+  if (strpos($_SERVER['HTTP_HOST'], "localhost")) {
+    if ($path) {
+      return CONF_URL_TEST . "/storage/" . ($path[0] == "/" ? mb_substr($path, 1) : $path);
+    }
+    return CONF_URL_TEST;
+  }
+
+  if ($path) {
+    return CONF_URL_BASE . "/storage/" . ($path[0] == "/" ? mb_substr($path, 1) : $path);
+  }
+
+  return CONF_URL_BASE;
+}
+
 function urlAJAX(string $path = null): string
 {
   if (strpos($_SERVER['HTTP_HOST'], "localhost")) {
@@ -472,14 +488,12 @@ function request_repeat(string $field, string $value): bool
     return false;
 }
 
-function generate_code(string $value)
+function generate_code(int $size = 7)
 {
-  $md5 = md5($value);
-  $res = "";
-
-  for ( $i = 0; $i < 32; $i += 2 ) {
-    $res .= chr( hexdec( $md5{ $i + 1 } ) + hexdec( $md5{ $i } ) * 16 );
+  $chars = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuwxyz0123456789";
+  $randomString = '';
+  for($i = 0; $i < $size; $i = $i+1){
+    $randomString .= $chars[mt_rand(0,60)];
   }
-
-  return $res;
+  return $randomString;
 }

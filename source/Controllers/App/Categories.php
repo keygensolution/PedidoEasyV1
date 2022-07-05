@@ -4,6 +4,7 @@ namespace Source\Controllers\App;
 
 use Source\Models\Auth;
 use Source\Models\tables\T005Categories;
+use Source\Services\CategoriesService;
 use Source\Support\Upload;
 
 class Categories extends App
@@ -13,8 +14,13 @@ class Categories extends App
     parent::__construct();
   }
 
+
   public function index(): void
   {
+    $categoryService = new CategoriesService();
+
+    $ListCategories = $categoryService->ListAll();
+
     $head = $this->seo->render(
       "Categorias - " . CONF_SITE_NAME . " - " . CONF_SITE_TITLE,
       CONF_SITE_DESC,
@@ -23,14 +29,15 @@ class Categories extends App
     );
 
     echo $this->view->render("views/Categories/index", [
-      "head" => $head
+      "head" => $head,
+      "ListCategories" => $ListCategories
     ]);
   }
 
   public function registerCategory(): void
   {
     $head = $this->seo->render(
-      "Categorias - " . CONF_SITE_NAME . " - " . CONF_SITE_TITLE,
+      "Cadastrar Categoria - " . CONF_SITE_NAME . " - " . CONF_SITE_TITLE,
       CONF_SITE_DESC,
       url(),
       theme("/assets/images/share.jpg")
@@ -41,38 +48,80 @@ class Categories extends App
     ]);
   }
 
-  public function create(?array $data)
+  public function changeCategory(array $data): void
   {
-    $data = filter_var_array($data, FILTER_SANITIZE_STRIPPED);
+    $categoryService = new CategoriesService();
 
-    $t005_categories_create = new T005Categories();
+    $categoryService->ValidateCompanyCategory($data["id"]);
 
-    $t005_categories_create->category_name = $data["category_name"];
-    $t005_categories_create->description = $data["description"];
-    $t005_categories_create->status = $data["status"] == 1 ? true : false;
-//    $t005_categories_create->company_id = Auth::company()->id;
-
-    if (!empty($_FILES["photo"])) {
-      $file = $_FILES["photo"];
-      $upload = new Upload();
-      $image = $upload->image($file, generate_code($data["category_name"]), 600);
-
-      if (!$image) {
-        $json["message"] = $upload->message()->render();
-        echo json_encode($json);
-        return;
-      }
-
-      $t005_categories_create->photo = $image;
+    if (!$categoryService->ValidateCompanyCategory($data["id"])) {
+      $this->message->warning("Você tentou acessar uma categoria que não está vinculada a sua empresa!")->flash();
+      redirect("/app/categories");
     }
 
-    $t005_categories_create->save();
-    $this->message->success("Categoria cadastrado com sucesso...")->flash();
+    $category = $categoryService->ListOne($data["id"]);
+
+    $head = $this->seo->render(
+      "Alterar Categoria - " . CONF_SITE_NAME . " - " . CONF_SITE_TITLE,
+      CONF_SITE_DESC,
+      url(),
+      theme("/assets/images/share.jpg")
+    );
+
+    echo $this->view->render("views/Categories/change_category", [
+      "head" => $head,
+      "category" => $category
+    ]);
+  }
+
+  public function create(?array $data): void
+  {
+    $categoryService = new CategoriesService();
+
+    $categoryService->CreateCategory($data);
+
+    $this->message->success("Categoria cadastrada com sucesso.")->flash();
     $json["redirect"] = url("/app/categories");
 
     echo json_encode($json);
     return;
   }
 
+  public function update(?array $data): void
+  {
+    $categoryService = new CategoriesService();
+
+    if (!$categoryService->ValidateCompanyCategory($data["id"])) {
+      $this->message->warning("Você tentou atualizar uma categoria que não está vinculada a sua empresa!")->flash();
+      $json["reload"] = url("/app/categories");
+      echo json_encode($json);
+      return;
+    }
+
+    $categoryService->UpdateCategory($data);
+
+    $this->message->success("Categoria alterada com sucesso.")->flash();
+    $json["redirect"] = url("/app/categories/update/{$data["id"]}");
+    echo json_encode($json);
+    return;
+  }
+
+  public function delete(?array $data): void
+  {
+    $categoryService = new CategoriesService();
+
+    if (!$categoryService->ValidateCompanyCategory($data["id"])) {
+      $this->message->warning("Você tentou deletar uma categoria que não está vinculada a sua empresa!")->flash();
+      $json["reload"] = url("/app/categories");
+      echo json_encode($json);
+      return;
+    }
+
+    $categoryService->DeleteCategory($data["id"]);
+
+    $this->message->success("Categoria deletada com sucesso.")->flash();
+    echo json_encode(["reload" => true]);
+    return;
+  }
 
 }
