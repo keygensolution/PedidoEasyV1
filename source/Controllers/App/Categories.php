@@ -19,6 +19,7 @@ class Categories extends App
   {
     $categoryService = new CategoriesService();
 
+
     $ListCategories = $categoryService->ListAll();
 
     $head = $this->seo->render(
@@ -51,8 +52,6 @@ class Categories extends App
   public function changeCategory(array $data): void
   {
     $categoryService = new CategoriesService();
-
-    $categoryService->ValidateCompanyCategory($data["id"]);
 
     if (!$categoryService->ValidateCompanyCategory($data["id"])) {
       $this->message->warning("Você tentou acessar uma categoria que não está vinculada a sua empresa!")->flash();

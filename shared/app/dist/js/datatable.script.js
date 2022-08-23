@@ -3,7 +3,7 @@
 var editor;
  $('#example').DataTable({
      responsive: true,
-     "scrollY": "335px",
+     // "scrollY": "335px",
      "scrollCollapse": true,
      language: {
          "sEmptyTable": "Nenhum registro encontrado",
