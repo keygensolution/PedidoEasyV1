@@ -36,7 +36,7 @@ class Login extends Controller
   {
 
     if (!empty($data['csrf'])) {
-      if (!csrf_verify($data)) {
+      if (!csrf_verify($data)) {!
         $json['message'] = $this->message->error("Erro ao enviar, favor use o formulário")->render();
         echo json_encode($json);
         return;

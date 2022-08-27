@@ -68,20 +68,53 @@ create table t004_ceo_and_companies
 );
 
 insert into t004_ceo_and_companies (user_id, company_id)
-    value (2, 3);
+    value (1, 1);
 
 create table t005_categories
 (
     id            int          not null auto_increment primary key,
     category_name varchar(100) not null,
     description   varchar(255) not null,
-    status        bool                  default 1,
+    status        varchar(20)                  default 'Ativo',
     photo         varchar(100) not null,
     company_id    int,
     foreign key (company_id) references t003_companies (id),
     created_at    timestamp    not null default current_timestamp,
     updated_at    timestamp    null     default null on update current_timestamp
 );
+
+create table t006_preparation_sectors
+(
+    id                 int         not null auto_increment primary key,
+    preparation_sector varchar(50) not null,
+    company_id         int,
+    foreign key (company_id) references t003_companies (id),
+    created_at         timestamp   not null default current_timestamp,
+    updated_at         timestamp   null     default null on update current_timestamp
+);
+
+create table t007_products
+(
+    id                    int            not null auto_increment primary key,
+    product_name          varchar(100)   not null,
+    product_description   text           not null,
+    product_value         decimal(10, 2) not null,
+    product_type          int            not null,
+    unit_type             int            not null,
+    preparation_sector_id int            not null,
+    photo                 varchar(100)   not null,
+    input                 int            not null,
+    unique_code           char(7)        null,
+    minimun_quantity      int            null,
+    production_value      decimal(10, 2) null,
+    preparation_time      int            null,
+    company_id            int,
+    foreign key (company_id) references t003_companies (id),
+    foreign key (preparation_sector_id) references t006_preparation_sectors (id),
+    created_at            timestamp      not null default current_timestamp,
+    updated_at            timestamp      null     default null on update current_timestamp
+);
+
 
 create view vw001_list_of_companies
 as
@@ -96,6 +129,3 @@ from t004_ceo_and_companies as a
                     on a.user_id = b.id
          inner join t003_companies c
                     on a.company_id = c.id;
-
-
-select * from t005_categories where company_id = 1 or company_id is null

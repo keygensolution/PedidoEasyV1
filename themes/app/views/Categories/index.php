@@ -16,66 +16,75 @@
                 </div>
             </div>
         </div>
-        <!-- END: Breadcrumbs-->
 
-        <!-- START: Card Data-->
-        <div class="row">
-            <div class="col-12 mt-3">
-                <div class="card">
 
-                    <a class="btn btn-success" href="<?= url("/app/categories/create"); ?>" style="color: #FFFFFF">
-                        <i class="fas fa-plus"></i> Cadastrar</a>
-                    <div class="card-body">
-                        <div class="table-responsive">
-                            <table id="example" class="display table dataTable table-striped table-bordered">
-                                <thead>
-                                <tr>
-                                    <th>Imagem</th>
-                                    <th>Nome Categoria</th>
-                                    <th>Descrição</th>
-                                    <th>status</th>
-                                    <th>Ações</th>
-                                </tr>
-                                </thead>
-                                <tbody>
+        <a class="btn btn-success col-12" href="<?= url("/app/categories/create"); ?>" style="color: #FFFFFF">
+            <i class="fas fa-plus"></i> Cadastrar</a>
 
-                                <?php foreach ($ListCategories as $item): ?>
-                                    <tr>
-                                        <td>
-                                          <?php if (empty($item->photo)): ?>
-                                              <img src="<?= url("/shared/app/images/blank-image.svg"); ?>" width="55"
-                                                   class="rounded-circle ml-auto">
-                                          <?php else: ?>
-                                              <img src="<?= urlSource($item->photo) ?>" width="55"
-                                                   class="rounded-circle ml-auto">
-                                          <?php endif; ?>
-                                        </td>
-                                        <td style="padding-top: 30px"><?= $item->category_name ?></td>
-                                        <td style="padding-top: 30px"><?= $item->description ?></td>
-                                        <td style="padding-top: 30px"><?= $item->status ?></td>
-                                        <td style="padding-top: 25px">
-                                          <?php if (!empty($item->company_id)): ?>
-                                              <a class="btn btn-primary" style="color: #FFFFFF"
-                                                 href="<?= url("/app/categories/update/{$item->id}"); ?>">
-                                                  <i class="fas fa-edit"></i> Editar </a>
-                                              <a class="btn btn-danger" style="color: #FFFFFF"
-                                                 onclick="deleteCategory(<?= $item->id ?>)">
-                                                  <i class="fas fa-times"></i> Excluir </a>
-                                          <?php endif; ?>
+      <?php if (!empty($ListCategories)): ?>
 
-                                        </td>
-                                    </tr>
-                                <?php endforeach; ?>
+          <div class="row">
+              <div class="col-12 mt-3">
+                  <div class="card">
 
-                                </tbody>
 
-                            </table>
-                        </div>
-                    </div>
-                </div>
+                      <div class="card-body">
+                          <div class="table-responsive">
+                              <table id="example" class="display table dataTable table-striped table-bordered">
+                                  <thead>
+                                  <tr>
+                                      <th>Imagem</th>
+                                      <th>Nome Categoria</th>
+                                      <th>Descrição</th>
+                                      <th>status</th>
+                                      <th>Ações</th>
+                                  </tr>
+                                  </thead>
+                                  <tbody>
 
-            </div>
-        </div>
+                                  <?php foreach ($ListCategories as $item): ?>
+                                      <tr>
+                                          <td>
+                                            <?php if (empty($item->photo)): ?>
+                                                <img src="<?= url("/shared/app/images/blank-image.svg"); ?>" width="55"
+                                                     class="rounded-circle ml-auto">
+                                            <?php else: ?>
+                                                <img src="<?= urlSource($item->photo) ?>" width="55"
+                                                     class="rounded-circle ml-auto">
+                                            <?php endif; ?>
+                                          </td>
+                                          <td style="padding-top: 30px"><?= $item->category_name ?></td>
+                                          <td style="padding-top: 30px"><?= $item->description ?></td>
+                                          <td style="padding-top: 30px"><?= $item->status ?></td>
+                                          <td style="padding-top: 25px">
+                                            <?php if (!empty($item->company_id)): ?>
+                                                <a class="btn btn-primary" style="color: #FFFFFF"
+                                                   href="<?= url("/app/categories/update/{$item->id}"); ?>">
+                                                    <i class="fas fa-edit"></i> Editar </a>
+                                                <a class="btn btn-danger delete" style="color: #FFFFFF"
+                                                   data-id="<?= $item->id ?>"
+                                                   onclick="DeleteObject(<?= $item->id ?>, 'deleteCategory', 'Categoria deletada com sucesso!', '<?= urlAJAX("app/categories/delete"); ?>')">
+                                                    <i class="fas fa-times"></i> Excluir </a>
+                                            <?php endif; ?>
+
+                                          </td>
+                                      </tr>
+                                  <?php endforeach; ?>
+
+                                  </tbody>
+
+                              </table>
+                          </div>
+                      </div>
+                  </div>
+
+              </div>
+          </div>
+      <?php else: ?>
+          <div class="alert alert-primary mt-3" role="alert">
+              Não existem categorias cadastradas.
+          </div>
+      <?php endif; ?>
 
     </div>
 </main>

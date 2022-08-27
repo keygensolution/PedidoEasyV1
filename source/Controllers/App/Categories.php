@@ -19,6 +19,7 @@ class Categories extends App
   {
     $categoryService = new CategoriesService();
 
+
     $ListCategories = $categoryService->ListAll();
 
     $head = $this->seo->render(
@@ -52,8 +53,6 @@ class Categories extends App
   {
     $categoryService = new CategoriesService();
 
-    $categoryService->ValidateCompanyCategory($data["id"]);
-
     if (!$categoryService->ValidateCompanyCategory($data["id"])) {
       $this->message->warning("Você tentou acessar uma categoria que não está vinculada a sua empresa!")->flash();
       redirect("/app/categories");
@@ -78,6 +77,13 @@ class Categories extends App
   {
     $categoryService = new CategoriesService();
 
+    if (!$categoryService->SearchDuplicateCategory($data["category_name"]))
+    {
+      $json["message"] = $this->message->warning("Categoria duplicada.")->render();
+      echo json_encode($json);
+      return;
+    }
+
     $categoryService->CreateCategory($data);
 
     $this->message->success("Categoria cadastrada com sucesso.")->flash();
@@ -94,6 +100,13 @@ class Categories extends App
     if (!$categoryService->ValidateCompanyCategory($data["id"])) {
       $this->message->warning("Você tentou atualizar uma categoria que não está vinculada a sua empresa!")->flash();
       $json["reload"] = url("/app/categories");
+      echo json_encode($json);
+      return;
+    }
+
+    if ($categoryService->FetchDuplicateCategoryForUpdate($data["category_name"], $data["id"]))
+    {
+      $json["message"] = $this->message->warning("Categoria duplicada.")->render();
       echo json_encode($json);
       return;
     }

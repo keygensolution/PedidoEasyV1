@@ -154,7 +154,7 @@
                                                 <label for="description">Descrição</label>
                                                 <textarea type="text" class="form-control" id="description"
                                                           name="description"
-                                                          rows="2"> <?= $category->description ?></textarea>
+                                                          rows="2"><?= $category->description ?></textarea>
                                             </div>
 
                                             <button type="submit" class="btn btn-primary">Alterar</button>
