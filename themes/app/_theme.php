@@ -41,6 +41,8 @@ $companies = (new VW001ListOfCompany())
     <link rel="stylesheet" href="<?= url("/shared/app/dist/vendors/ionicons/css/ionicons.min.css"); ?>">
     <link rel="stylesheet" href="<?= url("/shared/app/dist/vendors/jquery-jvectormap/jquery-jvectormap-2.0.3.css"); ?>">
 
+    <link rel="stylesheet" href="<?= url("/shared/app/dist/vendors/sweetalert/sweetalert.css"); ?>">
+
     <link rel="stylesheet" href="<?= url("/shared/app/dist/vendors/datatable/css/dataTables.bootstrap4.min.css"); ?>">
     <link rel="stylesheet"
           href="<?= url("/shared/app/dist/vendors/datatable/buttons/css/buttons.bootstrap4.min.css"); ?>">
@@ -435,6 +437,10 @@ $companies = (new VW001ListOfCompany())
 <script src="<?= url("/shared/app/dist/vendors/datatable/buttons/js/buttons.html5.min.js"); ?>"></script>
 <script src="<?= url("/shared/app/dist/vendors/datatable/buttons/js/buttons.print.min.js"); ?>"></script>
 <script src="<?= url("/shared/app/dist/js/datatable.script.js"); ?>"></script>
+
+<script src="<?= url("/shared/app/dist/vendors/sweetalert/sweetalert.min.js"); ?>"></script>
+<script src="<?= url("/shared/scripts/alerts.js"); ?>"></script>
+<script src="<?= url("/shared/scripts/actions.js"); ?>"></script>
 
 <script src="<?= theme("/assets/js/scripts.js", CONF_VIEW_APP); ?>"></script>
 

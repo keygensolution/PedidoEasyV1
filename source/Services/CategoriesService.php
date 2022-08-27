@@ -104,7 +104,6 @@ class CategoriesService
 
   public function ValidateCompanyCategory(int $id): bool
   {
-
     $category = (new T005Categories())->findById($id);
 
     if ($category->company_id != Auth::company()->id) {
@@ -112,6 +111,34 @@ class CategoriesService
     } else {
       return true;
     }
+  }
+
+  public function SearchDuplicateCategory(string $category_name): bool
+  {
+    $company = Auth::company();
+    $category = (new T005Categories())
+      ->find("category_name = :category_name and company_id = :company_id", "category_name={$category_name}&company_id={$company->id}")
+      ->fetch();
+
+    if ($category) {
+      return false;
+    } else {
+      return true;
+    }
+  }
+
+  public function FetchDuplicateCategoryForUpdate(string $category_name, int $category_id)
+  {
+    $company = Auth::company();
+    $category = (new T005Categories())
+      ->find("category_name = :category_name and company_id = :company_id and id != :id", "category_name={$category_name}&company_id={$company->id}&id={$category_id}")
+      ->fetch();
+
+      if ($category) {
+        return true;
+      } else {
+        return false;
+      }
   }
 
 }

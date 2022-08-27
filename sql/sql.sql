@@ -75,7 +75,7 @@ create table t005_categories
     id            int          not null auto_increment primary key,
     category_name varchar(100) not null,
     description   varchar(255) not null,
-    status        bool                  default 1,
+    status        varchar(20)                  default 'Ativo',
     photo         varchar(100) not null,
     company_id    int,
     foreign key (company_id) references t003_companies (id),
