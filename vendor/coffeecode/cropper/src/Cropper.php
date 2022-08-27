@@ -275,7 +275,7 @@ class Cropper
      */
     public function toWebP(string $image, $unlinkImage = true): string
     {
-        try {
+//        try {
             $webPConverted = pathinfo($image)["dirname"] . "/" . pathinfo($image)["filename"] . ".webp";
             WebPConvert::convert($image, $webPConverted, ["default-quality" => $this->quality]);
 
@@ -284,8 +284,8 @@ class Cropper
             }
 
             return $webPConverted;
-        } catch (ConversionFailedException) {
-            return $image;
-        }
+//        } catch (ConversionFailedException) {
+//            return $image;
+//        }
     }
 }
